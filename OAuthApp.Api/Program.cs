@@ -101,6 +101,7 @@ builder.Services.AddRazorPages()
 // Register the Swagger services
 builder.Services.AddSwaggerDocument(document =>
 {
+    document.Title = "OAuth App";
     document.OperationProcessors.Add(new OperationSecurityScopeProcessor("Bearer"));
     document.DocumentProcessors.Add(new SecurityDefinitionAppender("Bearer", new OpenApiSecurityScheme
     {
@@ -146,10 +147,7 @@ app.UseEndpoints(options =>
     options.MapRazorPages();
     options.MapControllers();
     options.MapFallbackToFile("index.html");
-    //options.MapDefaultControllerRoute();
 });
-
-app.UseWelcomePage();
 
 app.Run();
 
